@@ -15,4 +15,8 @@
     <string name="latest_message">Latest Message</string>
     <string name="logout">Logout</string>
     <string name="timestamp">Timestamp</string>
+    <string name="news">News</string>
+    <string name="weather">Weather</string>
+    <string name="note">Note</string>
+    <string name="chat">Chat</string>
 </resources>
