@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".chat.ChatsLatest">
+        <activity android:name=".bottom_nav.ChatFragment"/>
+        <activity android:name=".chat.Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,13 +21,14 @@
         <activity android:name=".chat.ChatUsers">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".chat.ChatsLatest" />
+                android:value=".chat.Main" />
         </activity>
         <activity android:name=".chat.ChatLog">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".chat.ChatsLatest" />
+                android:value=".chat.Main" />
         </activity>
+
 
     </application>
 

@@ -3,6 +3,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log.d
 import com.david.myapplication.R
+import com.david.myapplication.bottom_nav.ChatFragment
 import com.david.myapplication.model.chat_model.ChatMessage
 import com.david.myapplication.model.user_model.User
 import com.david.myapplication.view.ChatItemLeft
@@ -49,7 +50,7 @@ class ChatLog : AppCompatActivity() {
                     d("ChatLog",chatMessage.text)
 
                     if(chatMessage.fromId == FirebaseAuth.getInstance().uid){
-                        val currentUser = ChatsLatest.currentUser ?: return
+                        val currentUser = ChatFragment.currentUser ?: return
                         adapter.add(ChatItemRight(chatMessage.text,currentUser))
                     }
                     else{

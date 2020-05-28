@@ -9,9 +9,8 @@ import android.provider.MediaStore
 import android.util.Log
 import android.util.Log.d
 import android.widget.Toast
-import com.david.myapplication.chat.ChatsLatest
+import com.david.myapplication.chat.Main
 import com.david.myapplication.R
-import com.david.myapplication.extension.hideKeyboard
 import com.david.myapplication.model.user_model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -26,21 +25,22 @@ class Register : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         supportActionBar?.title = "Register"
 
-        register_button_register.setOnClickListener {
-          register()
-        }
-
-        already_have_an_account_tv_register.setOnClickListener {
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
-        }
-
         choose_profile_button_register.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(intent,0)
             d("RegisterActivity","Choose Profile Picture")
         }
+
+        register_button_register.setOnClickListener {
+          signUpWithEmailAndPassword()
+        }
+
+        already_have_an_account_tv_register.setOnClickListener {
+            startActivity(Intent(this, Login::class.java))
+        }
+
+
     }
 
 
@@ -57,7 +57,7 @@ class Register : AppCompatActivity() {
         }
     }
 
-    private fun register() {
+    private fun signUpWithEmailAndPassword() {
         val email = email_et_register.text.toString()
         val password = password_et_register.text.toString()
         val username = username_et_register.text.toString()
@@ -100,8 +100,8 @@ class Register : AppCompatActivity() {
 //                        d("RegisterActivity", "Failed to create user: ${it.message}")
 //                        Toast.makeText(this, "${it.message}", Toast.LENGTH_SHORT).show()
 //                    }
+                    }
             }
-        }
         }
 
     }
@@ -131,7 +131,7 @@ class Register : AppCompatActivity() {
         ref.setValue(user)
             .addOnSuccessListener {
                 d("RegisterActivity","Successfully saved user to firebase database")
-                val intent = Intent(this, ChatsLatest::class.java)
+                val intent = Intent(this, Main::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }
