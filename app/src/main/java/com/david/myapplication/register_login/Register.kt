@@ -9,9 +9,9 @@ import android.provider.MediaStore
 import android.util.Log
 import android.util.Log.d
 import android.widget.Toast
-import com.david.myapplication.chat.Main
+import com.david.myapplication.Main
 import com.david.myapplication.R
-import com.david.myapplication.model.user_model.User
+import com.david.myapplication.register_login.user_model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage

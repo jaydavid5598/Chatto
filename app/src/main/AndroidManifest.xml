@@ -12,7 +12,7 @@
 
         <activity android:name=".bottom_nav.ChatFragment" />
 
-        <activity android:name=".chat.Main">
+        <activity android:name=".Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -26,13 +26,13 @@
         <activity android:name=".chat.ChatUsers">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".chat.Main" />
+                android:value=".Main" />
         </activity>
 
         <activity android:name=".chat.ChatLog">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".chat.Main" />
+                android:value=".Main" />
         </activity>
 
 

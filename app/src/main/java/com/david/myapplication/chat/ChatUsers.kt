@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log.d
 import com.david.myapplication.R
-import com.david.myapplication.model.user_model.User
-import com.david.myapplication.view.UserItem
+import com.david.myapplication.register_login.user_model.User
+import com.david.myapplication.chat.view.UserItem
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase

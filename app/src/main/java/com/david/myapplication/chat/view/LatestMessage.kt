@@ -1,8 +1,7 @@
-package com.david.myapplication.view
+package com.david.myapplication.chat.view
 
-import android.util.Log.d
-import com.david.myapplication.model.chat_model.ChatMessage
-import com.david.myapplication.model.user_model.User
+import com.david.myapplication.chat.chat_model.ChatMessage
+import com.david.myapplication.register_login.user_model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

@@ -1,4 +1,4 @@
-package com.david.myapplication.chat
+package com.david.myapplication
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
-import com.david.myapplication.R
 import com.david.myapplication.bottom_nav.*
+import com.david.myapplication.chat.ChatUsers
+import com.david.myapplication.covid19.CovidReportFragment
 import com.david.myapplication.register_login.Login
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_latest_message.*
@@ -34,7 +35,8 @@ class Main: AppCompatActivity() {
                 R.id.bot_nav_news -> selectedFragment = NewsFragment()
                 R.id.bot_nav_weather -> selectedFragment = WeatherFragment()
                 R.id.bot_nav_note -> selectedFragment = NoteFragment()
-                R.id.bot_nav_covid -> selectedFragment = CovidReportFragment()
+                R.id.bot_nav_covid -> selectedFragment =
+                    CovidReportFragment()
 
             }
             if(selectedFragment != null){

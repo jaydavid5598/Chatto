@@ -1,7 +1,7 @@
-package com.david.myapplication.view
+package com.david.myapplication.chat.view
 
 import com.david.myapplication.R
-import com.david.myapplication.model.user_model.User
+import com.david.myapplication.register_login.user_model.User
 import com.squareup.picasso.Picasso
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder

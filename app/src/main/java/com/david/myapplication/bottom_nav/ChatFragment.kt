@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.david.myapplication.R
 import com.david.myapplication.chat.ChatLog
-import com.david.myapplication.model.chat_model.ChatMessage
-import com.david.myapplication.model.user_model.User
+import com.david.myapplication.chat.chat_model.ChatMessage
+import com.david.myapplication.register_login.user_model.User
 import com.david.myapplication.register_login.Login
-import com.david.myapplication.view.LatestMessage
+import com.david.myapplication.chat.view.LatestMessage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
@@ -128,5 +128,4 @@ class ChatFragment : Fragment(){
         }
     }
 
-//putangina lord
 }

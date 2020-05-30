@@ -1,4 +1,4 @@
-package com.david.myapplication.model.chat_model
+package com.david.myapplication.chat.chat_model
 
 
 class ChatMessage(val id:String,

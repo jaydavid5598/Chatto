@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.util.Log.d
 import com.david.myapplication.R
 import com.david.myapplication.bottom_nav.ChatFragment
-import com.david.myapplication.model.chat_model.ChatMessage
-import com.david.myapplication.model.user_model.User
-import com.david.myapplication.view.ChatItemLeft
-import com.david.myapplication.view.ChatItemRight
+import com.david.myapplication.chat.chat_model.ChatMessage
+import com.david.myapplication.register_login.user_model.User
+import com.david.myapplication.chat.view.ChatItemLeft
+import com.david.myapplication.chat.view.ChatItemRight
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot

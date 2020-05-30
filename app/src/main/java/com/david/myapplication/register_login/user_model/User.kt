@@ -1,4 +1,4 @@
-package com.david.myapplication.model.user_model
+package com.david.myapplication.register_login.user_model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

@@ -22,5 +22,6 @@
     <string name="sign_up">Sign Up</string>
     <string name="covid_19">COVID-19</string>
     <string name="you">you:</string>
+    <string name="location">Location</string>
 
 </resources>
