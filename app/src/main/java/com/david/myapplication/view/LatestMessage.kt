@@ -1,5 +1,6 @@
 package com.david.myapplication.view
 
+import android.util.Log.d
 import com.david.myapplication.model.chat_model.ChatMessage
 import com.david.myapplication.model.user_model.User
 import com.google.firebase.auth.FirebaseAuth
@@ -15,7 +16,6 @@ import kotlinx.android.synthetic.main.activity_latest_message_row.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 class LatestMessage(val chatMessage: ChatMessage): Item<ViewHolder>(){
     var chatPartnerUser : User? = null
 
@@ -23,12 +23,13 @@ class LatestMessage(val chatMessage: ChatMessage): Item<ViewHolder>(){
         return R.layout.activity_latest_message_row
     }
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        viewHolder.itemView.latest_message_textView.text = chatMessage.text
-        val chatpart:String
-        if(chatMessage.fromId == FirebaseAuth.getInstance().uid){
-            chatpart = chatMessage.toId
+
+        viewHolder.itemView.latest_message_textView.text =  chatMessage.text
+
+        val chatpart:String = if(chatMessage.fromId == FirebaseAuth.getInstance().uid){
+            chatMessage.toId
         }else{
-            chatpart = chatMessage.fromId
+            chatMessage.fromId
         }
         val ref = FirebaseDatabase.getInstance().getReference("/users/$chatpart")
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -44,7 +45,7 @@ class LatestMessage(val chatMessage: ChatMessage): Item<ViewHolder>(){
         })
         viewHolder.itemView.latest_username_textView.text = chatMessage.text
 
-        val date = SimpleDateFormat("h:mm a").format(Date(chatMessage.timestamp * 1000))
+        val date = SimpleDateFormat("MMM dd h:mm a").format(Date(chatMessage.timestamp * 1000))
         viewHolder.itemView.latest_timestamp_textView.text = date.toString()
 
     }

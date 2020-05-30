@@ -4,21 +4,25 @@
     <item android:id="@+id/bot_nav_chat"
         android:title="@string/chat"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_chat_bubble_black_24dp"/>
+        android:icon="@drawable/ic_chat_black_24dp"/>
 
     <item android:id="@+id/bot_nav_news"
         android:title="@string/news"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/news"/>
+        android:icon="@drawable/ic_public_black_24dp"/>
 
     <item android:id="@+id/bot_nav_weather"
         android:title="@string/weather"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/weather"/>
+        android:icon="@drawable/ic_wb_sunny_black_24dp"/>
 
     <item android:id="@+id/bot_nav_note"
         android:title="@string/note"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/note"/>
+        android:icon="@drawable/ic_assignment_black_24dp"/>
 
+    <item android:id="@+id/bot_nav_covid"
+        android:title="@string/covid_19"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_warning_black_24dp"/>
 </menu>

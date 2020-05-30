@@ -88,18 +88,6 @@ class Register : AppCompatActivity() {
                             Log.w("Register", "createUserWithEmail:failure", task.exception)
                             Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
                         }
-//                    .addOnCompleteListener {
-//                        if (!it.isSuccessful) return@addOnCompleteListener
-//                        d(
-//                            "RegisterActivity",
-//                            "Successfully created user uid: ${it.result?.user?.uid}"
-//                        )
-//                        uploadImageToFirebaseStorage()
-//                    }
-//                    .addOnFailureListener {
-//                        d("RegisterActivity", "Failed to create user: ${it.message}")
-//                        Toast.makeText(this, "${it.message}", Toast.LENGTH_SHORT).show()
-//                    }
                     }
             }
         }

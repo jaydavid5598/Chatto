@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.david.myapplication.R
+import kotlinx.android.synthetic.main.activity_latest_message.*
 
 class WeatherFragment : Fragment(){
 
