@@ -1,6 +1,6 @@
 package com.david.myapplication.chat.view
 
-import com.david.myapplication.chat.chat_model.ChatMessage
+import com.david.myapplication.chat.data_model.ChatRequest
 import com.david.myapplication.register_login.user_model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_latest_message_row.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class LatestMessage(val chatMessage: ChatMessage): Item<ViewHolder>(){
+class LatestMessage(val chatMessage: ChatRequest): Item<ViewHolder>(){
     var chatPartnerUser : User? = null
 
     override fun getLayout(): Int {

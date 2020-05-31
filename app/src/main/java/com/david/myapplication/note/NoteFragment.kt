@@ -1,4 +1,4 @@
-package com.david.myapplication.bottom_nav
+package com.david.myapplication.note
 
 import android.os.Bundle
 import android.view.LayoutInflater

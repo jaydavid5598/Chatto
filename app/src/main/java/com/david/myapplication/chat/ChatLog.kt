@@ -3,8 +3,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log.d
 import com.david.myapplication.R
-import com.david.myapplication.bottom_nav.ChatFragment
-import com.david.myapplication.chat.chat_model.ChatMessage
+import com.david.myapplication.chat.data_model.ChatRequest
 import com.david.myapplication.register_login.user_model.User
 import com.david.myapplication.chat.view.ChatItemLeft
 import com.david.myapplication.chat.view.ChatItemRight
@@ -45,7 +44,7 @@ class ChatLog : AppCompatActivity() {
         val ref = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId")
         ref.addChildEventListener(object : ChildEventListener{
             override fun onChildAdded(p0 : DataSnapshot, p1 : String?) {
-                val chatMessage= p0.getValue(ChatMessage::class.java)
+                val chatMessage= p0.getValue(ChatRequest::class.java)
                 if (chatMessage != null) {
                     d("ChatLog",chatMessage.text)
 
@@ -84,7 +83,7 @@ class ChatLog : AppCompatActivity() {
         val reference = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
         val toReference = FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
 
-        val chatMessage = ChatMessage(reference.key!!, text, fromId, toId, System.currentTimeMillis() / 1000)
+        val chatMessage = ChatRequest(reference.key!!, text, fromId, toId, System.currentTimeMillis() / 1000)
         reference.setValue(chatMessage)
             .addOnSuccessListener {
                 d("ChatLog","Saved message ${reference.key}")

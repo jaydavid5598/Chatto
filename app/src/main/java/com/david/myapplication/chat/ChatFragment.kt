@@ -1,4 +1,4 @@
-package com.david.myapplication.bottom_nav
+package com.david.myapplication.chat
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.david.myapplication.R
-import com.david.myapplication.chat.ChatLog
-import com.david.myapplication.chat.chat_model.ChatMessage
+import com.david.myapplication.chat.data_model.ChatRequest
 import com.david.myapplication.register_login.user_model.User
 import com.david.myapplication.register_login.Login
 import com.david.myapplication.chat.view.LatestMessage
@@ -48,13 +47,13 @@ class ChatFragment : Fragment(){
             intent.putExtra("username",row.chatPartnerUser)
             startActivity(intent)
         }
-        verifyIfUserIsLoggedIn()
+
         listenForLatestMessages()
         fetchUser()
         userLoggedProfile()
     }
 
-    val latestMessagesMap = HashMap<String, ChatMessage>()
+    val latestMessagesMap = HashMap<String, ChatRequest>()
 
     private fun refreshRecyclerViewMessages(){
         adapter.clear()
@@ -63,27 +62,19 @@ class ChatFragment : Fragment(){
         }
     }
 
-    private fun verifyIfUserIsLoggedIn() {
-        val uid = FirebaseAuth.getInstance().uid
-        if(uid == null){
-            val intent = Intent(activity, Login::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-        }
 
-    }
 
     private fun listenForLatestMessages() {
         val fromId = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("latest-messages/$fromId")
         ref.addChildEventListener(object: ChildEventListener {
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-                val chatMessage = p0.getValue(ChatMessage::class.java) ?:return
+                val chatMessage = p0.getValue(ChatRequest::class.java) ?:return
                 latestMessagesMap[p0.key!!] = chatMessage
                 refreshRecyclerViewMessages()
             }
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-                val chatMessage = p0.getValue(ChatMessage::class.java) ?:return
+                val chatMessage = p0.getValue(ChatRequest::class.java) ?:return
                 latestMessagesMap[p0.key!!] = chatMessage
                 refreshRecyclerViewMessages()
             }

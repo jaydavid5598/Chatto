@@ -1,7 +1,7 @@
-package com.david.myapplication.chat.chat_model
+package com.david.myapplication.chat.data_model
 
 
-class ChatMessage(val id:String,
+class ChatRequest(val id:String,
                   val text:String,
                   val fromId:String,
                   val toId:String,
