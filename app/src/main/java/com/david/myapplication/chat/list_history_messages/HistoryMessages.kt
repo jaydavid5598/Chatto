@@ -1,4 +1,4 @@
-package com.david.myapplication.chat
+package com.david.myapplication.chat.list_history_messages
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,24 +9,24 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.david.myapplication.R
 import com.david.myapplication.chat.data_model.ChatRequest
+import com.david.myapplication.chat.message.Message
 import com.david.myapplication.register_login.user_model.User
-import com.david.myapplication.register_login.Login
-import com.david.myapplication.chat.view.LatestMessage
+import com.david.myapplication.chat.list_history_messages.view.HistoryMessageVh
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.frag_chat.*
+import kotlinx.android.synthetic.main.activity_history_messages.*
 
 
-class ChatFragment : Fragment(){
+class HistoryMessages : Fragment(){
     companion object{
         var currentUser: User? = null
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.frag_chat, container,false)
+        return inflater.inflate(R.layout.activity_history_messages, container,false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,8 +41,8 @@ class ChatFragment : Fragment(){
         activity?.title = "Chats"
 
         adapter.setOnItemClickListener { item, _ ->
-            val intent = Intent(activity, ChatLog::class.java)
-            val row = item as LatestMessage
+            val intent = Intent(activity, Message::class.java)
+            val row = item as HistoryMessageVh
             row.chatPartnerUser
             intent.putExtra("username",row.chatPartnerUser)
             startActivity(intent)
@@ -58,7 +58,7 @@ class ChatFragment : Fragment(){
     private fun refreshRecyclerViewMessages(){
         adapter.clear()
         latestMessagesMap.values.forEach{
-            adapter.add(LatestMessage(it))
+            adapter.add(HistoryMessageVh(it))
         }
     }
 

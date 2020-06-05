@@ -1,4 +1,4 @@
-package com.david.myapplication.chat.view
+package com.david.myapplication.chat.list_history_messages.view
 
 import com.david.myapplication.chat.data_model.ChatRequest
 import com.david.myapplication.register_login.user_model.User
@@ -11,15 +11,15 @@ import com.squareup.picasso.Picasso
 import com.david.myapplication.R
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.activity_latest_message_row.view.*
+import kotlinx.android.synthetic.main.history_data_layout.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class LatestMessage(val chatMessage: ChatRequest): Item<ViewHolder>(){
+class HistoryMessageVh(val chatMessage: ChatRequest): Item<ViewHolder>(){
     var chatPartnerUser : User? = null
 
     override fun getLayout(): Int {
-        return R.layout.activity_latest_message_row
+        return R.layout.history_data_layout
     }
     override fun bind(viewHolder: ViewHolder, position: Int) {
 

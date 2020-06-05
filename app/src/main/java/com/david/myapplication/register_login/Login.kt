@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.david.myapplication.R
 import com.david.myapplication.Main
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 
 class Login : AppCompatActivity(){

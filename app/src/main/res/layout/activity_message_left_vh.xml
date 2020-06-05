@@ -15,7 +15,6 @@
         android:background="@drawable/rounded_edit_text_register_and_login"
         android:maxWidth="240dp"
         android:padding="16dp"
-        android:text="zawarudozawarudozawarudozawarudozawarudozawarudozawarudozawarudozawarudozawarudozawarudo"
         app:layout_constraintStart_toEndOf="@+id/mini_profile_chat_log_left"
         app:layout_constraintTop_toTopOf="@+id/mini_profile_chat_log_left" />
 
@@ -24,6 +23,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:civ_border_color="#fff"
+        app:civ_border_width="2dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"

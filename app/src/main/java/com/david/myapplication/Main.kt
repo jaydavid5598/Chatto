@@ -1,55 +1,52 @@
 package com.david.myapplication
 
-import android.app.AlertDialog
-import android.app.Application
-import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.david.myapplication.chat.ChatFragment
-import com.david.myapplication.chat.ChatUsers
+import com.david.myapplication.chat.list_history_messages.HistoryMessages
+import com.david.myapplication.chat.list_users.Users
 import com.david.myapplication.covid19.Covid
 import com.david.myapplication.news.News
-import com.david.myapplication.note.NoteFragment
+import com.david.myapplication.note.list.ListNoteFragment
 import com.david.myapplication.register_login.Login
 import com.david.myapplication.weather.WeatherFragment
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_latest_message.*
-import kotlin.system.exitProcess
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class Main: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_latest_message)
-        checkConnectivity()
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ChatFragment()).commit()
+        setContentView(R.layout.activity_main)
+
+        verifyIfUserIsLoggedIn()
+
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, HistoryMessages()).commit()
+
         bottomNavigationViews()
 
     }
-
-    private fun checkConnectivity(){
-        val cm = baseContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val netInfo = cm.activeNetworkInfo
-        if(netInfo != null && netInfo.isConnected){
-            verifyIfUserIsLoggedIn()
-        }else{
-            AlertDialog.Builder(this@Main)
-                .setTitle("No Internet Connection")
-                .setMessage("Check you network setting and try again")
-                .setCancelable(false)
-                .setPositiveButton("Ok") { _, _ ->
-                    finishAffinity();
-                    exitProcess(0)
-                }.show()
-        }
-    }
+//
+//    private fun checkConnectivity(){
+//        val cm = baseContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+//        val netInfo = cm.activeNetworkInfo
+//        if(netInfo != null && netInfo.isConnected){
+//            verifyIfUserIsLoggedIn()
+//        }else{
+//            AlertDialog.Builder(this@Main)
+//                .setTitle("No Internet Connection")
+//                .setMessage("Check you network setting and try again")
+//                .setCancelable(false)
+//                .setPositiveButton("Ok") { _, _ ->
+//                    finishAffinity();
+//                    exitProcess(0)
+//                }.show()
+//        }
+//    }
 
     private fun verifyIfUserIsLoggedIn() {
         val uid = FirebaseAuth.getInstance().uid
@@ -66,13 +63,13 @@ class Main: AppCompatActivity() {
 
             when(it.itemId){
                 R.id.bot_nav_chat -> selectedFragment =
-                    ChatFragment()
+                    HistoryMessages()
                 R.id.bot_nav_news -> selectedFragment =
                     News()
                 R.id.bot_nav_weather -> selectedFragment =
                     WeatherFragment()
                 R.id.bot_nav_note -> selectedFragment =
-                    NoteFragment()
+                    ListNoteFragment()
                 R.id.bot_nav_covid -> selectedFragment =
                     Covid()
 
@@ -100,7 +97,7 @@ class Main: AppCompatActivity() {
                 startActivity(intent)
             }
             R.id.menu_new_messages -> {
-                val intent = Intent(this, ChatUsers::class.java)
+                val intent = Intent(this, Users::class.java)
                 startActivity(intent)
             }
         }

@@ -1,12 +1,13 @@
-package com.david.myapplication.chat
+package com.david.myapplication.chat.message
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log.d
 import com.david.myapplication.R
+import com.david.myapplication.chat.list_history_messages.HistoryMessages
 import com.david.myapplication.chat.data_model.ChatRequest
 import com.david.myapplication.register_login.user_model.User
-import com.david.myapplication.chat.view.ChatItemLeft
-import com.david.myapplication.chat.view.ChatItemRight
+import com.david.myapplication.chat.message.view.MessageLeftVh
+import com.david.myapplication.chat.message.view.MessageRightVh
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -14,15 +15,15 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.activity_chat_log.*
+import kotlinx.android.synthetic.main.activity_message.*
 
-class ChatLog : AppCompatActivity() {
+class Message : AppCompatActivity() {
     val adapter = GroupAdapter<ViewHolder>()
     var toUser:User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chat_log)
+        setContentView(R.layout.activity_message)
 
         toUser = intent.getParcelableExtra<User>("username")
         supportActionBar?.title = toUser?.username
@@ -43,17 +44,18 @@ class ChatLog : AppCompatActivity() {
 
         val ref = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId")
         ref.addChildEventListener(object : ChildEventListener{
+
             override fun onChildAdded(p0 : DataSnapshot, p1 : String?) {
                 val chatMessage= p0.getValue(ChatRequest::class.java)
                 if (chatMessage != null) {
                     d("ChatLog",chatMessage.text)
 
                     if(chatMessage.fromId == FirebaseAuth.getInstance().uid){
-                        val currentUser = ChatFragment.currentUser ?: return
-                        adapter.add(ChatItemRight(chatMessage.text,currentUser))
+                        val currentUser = HistoryMessages.currentUser
+                            ?: return
+                        adapter.add(MessageRightVh(chatMessage.text, currentUser))
                     }
-                    else{
-                        adapter.add(ChatItemLeft(chatMessage.text,toUser!!))
+                    else{ adapter.add(MessageLeftVh(chatMessage.text, toUser!!))
                     }
                 }
                 recyclerview_chat_log.scrollToPosition(adapter.itemCount -1)

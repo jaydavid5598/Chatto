@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainBackground"
-    tools:context=".chat.ChatLog">
+    tools:context=".chat.message.Message">
 
     <Button
         android:id="@+id/send_button_chat_log"

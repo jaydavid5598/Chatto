@@ -12,7 +12,7 @@ import com.david.myapplication.covid19.api_services.CovidService
 import com.david.myapplication.covid19.api_services.retrofit_service.RetrofitService
 import com.david.myapplication.covid19.data_model.CountryDataRequest
 import com.david.myapplication.covid19.view.Covidvh
-import kotlinx.android.synthetic.main.frag_covid.*
+import kotlinx.android.synthetic.main.activity_covid.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,7 +20,7 @@ import retrofit2.Response
 class Covid : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.frag_covid, container,false)
+        return inflater.inflate(R.layout.activity_covid, container,false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

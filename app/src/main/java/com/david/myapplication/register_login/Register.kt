@@ -39,10 +39,7 @@ class Register : AppCompatActivity() {
         already_have_an_account_tv_register.setOnClickListener {
             startActivity(Intent(this, Login::class.java))
         }
-
-
     }
-
 
     private var selectedPhotoUri: Uri? = null
 

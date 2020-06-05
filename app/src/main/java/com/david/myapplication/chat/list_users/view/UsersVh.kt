@@ -1,4 +1,4 @@
-package com.david.myapplication.chat.view
+package com.david.myapplication.chat.list_users.view
 
 import com.david.myapplication.R
 import com.david.myapplication.register_login.user_model.User
@@ -7,7 +7,7 @@ import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activty_row_message.view.*
 
-class UserItem( val user : User): Item<ViewHolder>(){
+class UsersVh(val user : User): Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.username_new_message.text = user.username
         Picasso.get().load(user.profileImageUrl).into(viewHolder.itemView.profile_new_message)
